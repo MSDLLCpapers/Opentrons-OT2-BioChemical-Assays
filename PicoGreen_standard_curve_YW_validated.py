@@ -14,11 +14,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 '''
 
-# Volumes of reagents needed:
-#700uL of Reference Standard Stock on tube rack A1;
-#840uL of SSS on tube rack A2
-#13mL of PicoGreen assay reagent
 
+'''
+This script intends to run a PicoGreen assay standard curve on Opentrons OT2.
+Note that this script only runs a reference standard as of now.
+
+
+Volumes of reagents needed:
+700uL of Reference Standard Stock on tube rack A1;
+840uL of SSS on tube rack A2
+13mL of PicoGreen assay reagent
+'''
 #importing the API
 from opentrons import protocol_api
 import numpy as np
@@ -31,7 +37,7 @@ def run(protocol: protocol_api.ProtocolContext):
     tube_rack = protocol.load_labware('opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap',1) #Tube rack that holds the reference standard and the SSS goes on deck position #1
     final_plate = protocol.load_labware('corning_96_wellplate_360ul_flat', 3) #Final plate (the plate to be read) goes on deck position #3; it is a corning 96well plate
     diluent = protocol.load_labware('axygen_1_reservoir_90ml', 4) #Diluent reservoir goes on deck position #4
-    pg_reagent = protocol.load_labware('axygen_1_reservoir_90ml', 5) #PicoGreen dye reservoir goes on deck position $5
+    pg_reagent = protocol.load_labware('axygen_1_reservoir_90ml', 5) #PicoGreen dye reservoir goes on deck position #5
     stamping_plate = protocol.load_labware('nest_96_wellplate_2ml_deep', 6) #Stamping plate (as defined in the manuscript) goes on deck position #6
 
     tiprack_1_300 = protocol.load_labware('opentrons_96_tiprack_300ul', 7) #two 300uL tip racks go on deck positions #7 and 8 
